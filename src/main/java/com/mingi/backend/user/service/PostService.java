@@ -6,6 +6,7 @@ import com.mingi.backend.user.dto.PostDTO;
 import com.mingi.backend.user.dto.PostDTOTest;
 import com.mingi.backend.user.repository.CommentRepository;
 import com.mingi.backend.user.repository.PostRepository;
+import com.mingi.backend.user.repository.TagRepository;
 import com.mingi.backend.user.repository.UserRepository;
 import com.querydsl.core.types.ConstantImpl;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -33,6 +34,9 @@ public class PostService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private TagRepository tagRepository;
 
     public PostService(JPAQueryFactory queryFactory, CommentRepository commentRepository) {
         this.queryFactory = queryFactory;
@@ -75,7 +79,7 @@ public class PostService {
     }
 
     // DB에 게시물을 저장
-    public void savePost(PostDTO postSaveDTO, String userId) {
+    public void savePost(PostDTOTest postSaveDTO, String userId) {
         Post post = new Post();
         post.setTitle(postSaveDTO.getTitle());
         post.setContent(postSaveDTO.getContent());
@@ -99,7 +103,14 @@ public class PostService {
                 .fetchOne();
         User writer = userRepository.findById(userKey).orElseThrow(() -> new RuntimeException("User not found"));
         post.setWriter(writer);
+
+        Tag tag = new Tag();
+        tag.setTagData(postSaveDTO.getTags().toString());
+        post.setPostTags(postSaveDTO.getTags());
+
+        System.out.println(postSaveDTO);
         System.out.println(post);
+        System.out.println(tag);
 //        postRepository.save(post);
     }
 

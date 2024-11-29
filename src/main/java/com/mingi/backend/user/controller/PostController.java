@@ -3,6 +3,7 @@
     import com.mingi.backend.ResponseMessage;
     import com.mingi.backend.user.domain.Comment;
     import com.mingi.backend.user.dto.PostDTO;
+    import com.mingi.backend.user.dto.PostDTOTest;
     import com.mingi.backend.user.service.PostService;
     import jakarta.servlet.http.HttpServletRequest;
     import jakarta.servlet.http.HttpSession;
@@ -39,7 +40,7 @@
 
         // 서버로 데이터 제출 (게시물 작성)
         @PostMapping("/posts")
-        public ResponseEntity<?> uploadPost(@RequestPart("postRequest") PostDTO postDTO, HttpSession session) {
+        public ResponseEntity<?> uploadPost(@RequestPart("postRequest") PostDTOTest postDTO, HttpSession session) {
             String userId = (String) session.getAttribute("userId");
             postService.savePost(postDTO, userId);
             return ResponseEntity.ok("");

@@ -2,7 +2,7 @@
 프론트엔드 React와 스프링부트 백엔드를 활용한 게시판 프로젝트입니다.<br>
 기능 구현에 약 3주간의 시간이 소요되었습니다.
 
-## ▶ 소개 및 기능
+## ▶ 1. 소개 및 기능
 
 ### 소개
 HRD-NET에서 받은 교육을 기반으로 타인의 도움을 받지 않고 처음으로 제작한 프로젝트입니다. <br>
@@ -33,7 +33,8 @@ HRD-NET에서 받은 교육을 기반으로 타인의 도움을 받지 않고 �
 - 댓글 삭제
 ***
 
-## ▶ 기능 구현에 사용한 데이터베이스 목록 
+## ▶ 2. 구조 및 설계
+### 기능 구현에 사용한 데이터베이스 목록 
 #### ▼ User
 <img src="./image/User.png" width=1000px /><br>
 #### ▼ Profile
@@ -50,7 +51,7 @@ HRD-NET에서 받은 교육을 기반으로 타인의 도움을 받지 않고 �
 <img src="./image/Token.png" width=1000px /><br>
 ***
 
-## ▶ 기능 구현에 사용한 API 목록 
+### 기능 구현에 사용한 API 목록 
 #### ▼ LoginController
 API 이름 | URL | 요청 방식 | 설명
 ---------|---------|---------|---------
@@ -78,3 +79,36 @@ updatePostView| /posts/views/{postId} | PATCH | 해당 게시물의 조회수를
 postComment | /comments/{postId} | GET | 게시물에 표시될 식제되지 않은 댓글 목록을 Comment DB에서 가져옵니다.
 deletePost | /posts/{postId} | DELETE | 해당 게시물이 더이상 보이지 않도록 Post DB에서 해당 게시물의 is_delete를 N으로 변경합니다.
 addComment | /comments | POST | 받은 데이터를 Comment DB에 저장합니다.
+
+## ▶ 4. 기술 스택
+기술 | 버전
+---------|---------
+Spring Boot | 3.3.5
+mysql-connector-java | 8.0.30
+spring-boot-starter-data-redis | 2.7.7
+querydsl-jpa | 5.0.0
+querydsl-apt | 5.0.0
+jakarta.annotation-api |
+jakarta.persistence-api |
+jjwt | 0.9.1
+spring-cloud-starter-aws | 2.2.6.RELEASE
+spring-boot-starter-mail | 3.2.1
+
+## ▶ 5. 실행 화면
+#### ▼ noticelist
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼
+#### ▼

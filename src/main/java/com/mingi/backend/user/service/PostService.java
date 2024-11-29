@@ -201,7 +201,7 @@ public class PostService {
         QComment comment = QComment.comment;
         return queryFactory
                 .selectFrom(comment)
-                .where(comment.post.postId.eq(postId))
+                .where(comment.post.postId.eq(postId).and(comment.isDelete.notLike("N")))
                 .fetch();
     }
 

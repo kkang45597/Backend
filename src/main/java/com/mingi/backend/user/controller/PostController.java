@@ -13,10 +13,7 @@
     import org.springframework.http.ResponseEntity;
     import org.springframework.web.bind.annotation.*;
 
-    import java.util.ArrayList;
-    import java.util.Arrays;
     import java.util.Collections;
-    import java.util.List;
 
     @RestController
     public class PostController {
@@ -96,10 +93,10 @@
             }
         }
 
-        // 댓글 삭제 (미완, 삭제 버튼이 없다?)
-        @DeleteMapping("/comments/{commentId}")
-        public ResponseEntity<?> deleteComment(@PathVariable Long commentId) {
-            System.out.println(commentId);
-            return ResponseEntity.ok("");
-        }
+//        // 댓글 삭제 (미완, 삭제 버튼이 없다?)
+//        @DeleteMapping("/comments/{commentId}")
+//        public ResponseEntity<?> deleteComment(@PathVariable Long commentId) {
+//            System.out.println(commentId);
+//            return ResponseEntity.ok("");
+//        }
     }

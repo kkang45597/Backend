@@ -96,19 +96,34 @@ spring-boot-starter-mail | 3.2.1
 
 ## ▶ 5. 실행 화면
 #### ▼ noticelist
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
-#### ▼
+<img src="./image/noticelist.png" width=1000px /><br>
+#### ▼ login 성공
+<img src="./image/login sucess.png" width=1000px /><br>
+#### ▼ login 실패 (해당 아이디 없음)
+<img src="./image/login fail, id.png" width=1000px /><br>
+#### ▼ login 실패 (비밀번호 불일치)
+<img src="./image/login fail, password.png" width=1000px /><br>
+#### ▼ register 성공
+<img src="./image/register sucess send email.png" width=1000px /><br>
+#### ▼ register 실패 (사용중인 아이디)
+<img src="./image/register fail. id.png" width=1000px /><br>
+#### ▼ register 실패 (사용중인 이메일)
+<img src="./image/register fail, email.png" width=1000px /><br>
+#### ▼ 도착한 이메일
+<img src="./image/register email.png" width=1000px /><br>
+#### ▼ register 인증번호 성공
+<img src="./image/register sucess correct.png" width=1000px /><br>
+#### ▼ register 인증번호 실패
+<img src="./image/register fail not correct.png" width=1000px /><br>
+#### ▼ 
+<img src="./image/.png" width=1000px /><br>
+#### ▼ 
+<img src="./image/.png" width=1000px /><br>
+#### ▼ 
+<img src="./image/.png" width=1000px /><br>
+#### ▼ 
+<img src="./image/.png" width=1000px /><br>
+#### ▼ 
+<img src="./image/.png" width=1000px /><br>
+#### ▼ 
+<img src="./image/.png" width=1000px /><br>

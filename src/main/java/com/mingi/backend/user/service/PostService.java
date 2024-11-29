@@ -4,10 +4,7 @@ import com.mingi.backend.CustomPage;
 import com.mingi.backend.user.domain.*;
 import com.mingi.backend.user.dto.PostDTO;
 import com.mingi.backend.user.dto.PostDTOTest;
-import com.mingi.backend.user.repository.CommentRepository;
-import com.mingi.backend.user.repository.PostRepository;
-import com.mingi.backend.user.repository.TagRepository;
-import com.mingi.backend.user.repository.UserRepository;
+import com.mingi.backend.user.repository.*;
 import com.querydsl.core.types.ConstantImpl;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +34,9 @@ public class PostService {
 
     @Autowired
     private TagRepository tagRepository;
+
+    @Autowired
+    private PostTagRepository postTagRepository;
 
     public PostService(JPAQueryFactory queryFactory, CommentRepository commentRepository) {
         this.queryFactory = queryFactory;
@@ -84,7 +84,8 @@ public class PostService {
         post.setTitle(postSaveDTO.getTitle());
         post.setContent(postSaveDTO.getContent());
         post.setIsDelete("N");
-        post.setPostDate(LocalDateTime.now());
+        LocalDateTime time = LocalDateTime.now();
+        post.setPostDate(time);
         if(postSaveDTO.getPrivates() == null || postSaveDTO.getPrivates().equals("false")) {
             post.setIsPrivate("N");
         } else {
@@ -103,15 +104,41 @@ public class PostService {
                 .fetchOne();
         User writer = userRepository.findById(userKey).orElseThrow(() -> new RuntimeException("User not found"));
         post.setWriter(writer);
+        postRepository.save(post);
 
-        Tag tag = new Tag();
-        tag.setTagData(postSaveDTO.getTags().toString());
-        post.setPostTags(postSaveDTO.getTags());
+        List<String> tagDatas = postSaveDTO.getTags();
+        for(String tags : tagDatas) {
+            QTag tag = QTag.tag;
+            Long tagId = queryFactory
+                    .select(tag.tagId)
+                    .from(tag)
+                    .where(tag.tagData.eq(String.valueOf(tags)))
+                    .fetchOne();
+            if(tagId == null) {
+                Tag tagData = new Tag();
+                tagData.setTagData(String.valueOf(tags));
+                tagRepository.save(tagData);
+                tagId = queryFactory
+                        .select(tag.tagId)
+                        .from(tag)
+                        .where(tag.tagData.eq(String.valueOf(tags)))
+                        .fetchOne();
+            }
+            PostTag postTag = new PostTag();
+            Tag getTag = tagRepository.findById(tagId).orElseThrow(() -> new RuntimeException("TagId not found"));
+            postTag.setTag(getTag);
 
-        System.out.println(postSaveDTO);
-        System.out.println(post);
-        System.out.println(tag);
-//        postRepository.save(post);
+            QPost post1 = QPost.post;
+            Long postId = queryFactory
+                    .select(post1.postId)
+                    .from(post1)
+                    .where(post1.title.eq(post.getTitle()).and(post1.postDate.eq(time)))
+                    .fetchOne();
+            Post getPost = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("PostId not found"));
+            postTag.setPost(getPost);
+            System.out.println(postTag);
+//            postTagRepository.save(postTag);
+        }
     }
 
     // DB에 수정된 게시물을 저장

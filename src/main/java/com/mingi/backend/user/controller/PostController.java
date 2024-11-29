@@ -40,7 +40,8 @@
         public ResponseEntity<?> uploadPost(@RequestPart("postRequest") PostDTOTest postDTO, HttpSession session) {
             String userId = (String) session.getAttribute("userId");
             postService.savePost(postDTO, userId);
-            return ResponseEntity.ok("");
+//            return ResponseEntity.ok("");
+            return ResponseEntity.unprocessableEntity().build();
         }
 
         // 서버로 데이터 제출 (게시물 수정)

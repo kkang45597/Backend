@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.io.Serializable;
-
 @Entity
 @Getter
 @Setter
@@ -16,15 +14,18 @@ import java.io.Serializable;
 public class PostTag {
 
     @EmbeddedId
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private PostTagId id;
 
     @ManyToOne
     @MapsId("postPostId")
+    @JsonIgnore
     @JoinColumn(name = "post_post_id", insertable = false, updatable = false)
     private Post post;
 
     @ManyToOne
     @MapsId("tagTagId")
+    @JsonIgnore
     @JoinColumn(name = "tag_tag_id", insertable = false, updatable = false)
     private Tag tag;
 }

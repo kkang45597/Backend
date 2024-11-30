@@ -13,10 +13,10 @@ import java.util.List;
 @ToString
 public class PostDTOTest extends PostDTO {
     private List<String> tags;
-    public PostDTOTest(long numbers, String title, String content, int likes, int views, String blockComm,
-                       String privates, String isDelete, LocalDateTime postDate,
+    public PostDTOTest(long numbers, String title, String content, int likes, int views, String blockComment,
+                       String privatePost, String isDelete, LocalDateTime postDate,
                        String writer, String writerImage, List<String> tags) {
-        super(numbers, title, content, likes, views, blockComm, privates, isDelete, postDate, writer, writerImage);
+        super(numbers, title, content, likes, views, blockComment, privatePost, isDelete, postDate, writer, writerImage);
         this.tags = tags;
     }
 }

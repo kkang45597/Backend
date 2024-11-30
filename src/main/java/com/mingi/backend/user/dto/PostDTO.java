@@ -1,6 +1,8 @@
 package com.mingi.backend.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -16,17 +18,16 @@ public class PostDTO {
     private String content;
     private int likes;
     private int views;
-    private String blockComm;
-    private String privates;
+    private String blockComment;
+    private String privatePost;
     private String isDelete;
     @JsonFormat(pattern = "yy-MM-dd HH:mm")
     private LocalDateTime postDate;
-
     private String writer;
     private String writerImage;
 
     public PostDTO(long numbers, String title, String content, int likes, int views,
-                   String blockComm, String privates, String isDelete, LocalDateTime postDate,
+                   String blockComment, String privatePost, String isDelete, LocalDateTime postDate,
                    String writer, String writerImage) {
         this.numbers = numbers;
         this.postId = numbers;
@@ -34,8 +35,8 @@ public class PostDTO {
         this.content = content;
         this.likes = likes;
         this.views = views;
-        this.blockComm = blockComm;
-        this.privates = privates;
+        this.blockComment = blockComment;
+        this.privatePost = privatePost;
         this.isDelete = isDelete;
         this.postDate = postDate;
         this.writer = writer;

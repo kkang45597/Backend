@@ -40,8 +40,7 @@
         public ResponseEntity<?> uploadPost(@RequestPart("postRequest") PostDTOTest postDTO, HttpSession session) {
             String userId = (String) session.getAttribute("userId");
             postService.savePost(postDTO, userId);
-//            return ResponseEntity.ok("");
-            return ResponseEntity.unprocessableEntity().build();
+            return ResponseEntity.ok("");
         }
 
         // 서버로 데이터 제출 (게시물 수정)
@@ -94,7 +93,7 @@
             }
         }
 
-//        // 댓글 삭제 (미완, 삭제 버튼이 없다?)
+//        // 댓글 삭제 (미완, 삭제 버튼이 안보임?)
 //        @DeleteMapping("/comments/{commentId}")
 //        public ResponseEntity<?> deleteComment(@PathVariable Long commentId) {
 //            System.out.println(commentId);

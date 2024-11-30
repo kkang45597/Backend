@@ -10,6 +10,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import com.querydsl.core.types.Projections;
 
@@ -86,14 +87,16 @@ public class PostService {
         post.setIsDelete("N");
         LocalDateTime time = LocalDateTime.now();
         post.setPostDate(time);
-        if(postSaveDTO.getPrivates() == null || postSaveDTO.getPrivates().equals("false")) {
+        if(postSaveDTO.getPrivatePost() == null || postSaveDTO.getPrivatePost().equals("false")) {
             post.setIsPrivate("N");
-        } else {
+        }
+        else {
             post.setIsPrivate("Y");
         }
-        if(postSaveDTO.getBlockComm() == null || postSaveDTO.getBlockComm().equals("false")) {
+        if(postSaveDTO.getBlockComment() == null || postSaveDTO.getBlockComment().equals("false")) {
             post.setIsBlockComment("N");
-        } else {
+        }
+        else {
             post.setIsBlockComment("Y");
         }
         QUser user = QUser.user;
@@ -136,7 +139,7 @@ public class PostService {
                     .fetchOne();
             Post getPost = postRepository.findById(postId).orElseThrow(() -> new RuntimeException("PostId not found"));
             postTag.setPost(getPost);
-            System.out.println(postTag);
+//            System.out.println(postTag);
 //            postTagRepository.save(postTag);
         }
     }
@@ -154,12 +157,12 @@ public class PostService {
         post.setViews(PostData.getViews());
 
         post.setPostDate(LocalDateTime.now());
-        if(postSaveDTO.getPrivates() == null || postSaveDTO.getPrivates().equals("false")) {
+        if(postSaveDTO.getPrivatePost() == null || postSaveDTO.getPrivatePost().equals("false")) {
             post.setIsPrivate("N");
         } else {
             post.setIsPrivate("Y");
         }
-        if(postSaveDTO.getBlockComm() == null || postSaveDTO.getBlockComm().equals("false")) {
+        if(postSaveDTO.getBlockComment() == null || postSaveDTO.getBlockComment().equals("false")) {
             post.setIsBlockComment("N");
         } else {
             post.setIsBlockComment("Y");
@@ -189,7 +192,6 @@ public class PostService {
 
     // 해당 게시물 상세 정보를 반환
     public PostDTOTest getPostDetail(Long postId) {
-        
         // 태그 삽입 기능
         QPostTag postTag = QPostTag.postTag;
         List<Long> tagPostData;
@@ -212,6 +214,7 @@ public class PostService {
 
         QPost post = QPost.post;
         QUser user = QUser.user;
+
         return queryFactory
                 .select(Projections.constructor(
                         PostDTOTest.class, as(post.postId, "postId"), post.title, post.content, post.likes, post.views,
@@ -228,11 +231,11 @@ public class PostService {
         QComment comment = QComment.comment;
         return queryFactory
                 .selectFrom(comment)
-                .where(comment.post.postId.eq(postId).and(comment.isDelete.notLike("N")))
+                .where(comment.post.postId.eq(postId).and(comment.isDelete.like("N")))
                 .fetch();
     }
 
-    // 게시물이 비공개가 되도록 DB에 저장
+    // 게시물이 삭제되어 비공개가 되도록 DB에 저장
     public void deletePost(Long postId) {
         QPost post = QPost.post;
         Post postData = queryFactory

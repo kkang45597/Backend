@@ -95,35 +95,43 @@ spring-cloud-starter-aws | 2.2.6.RELEASE
 spring-boot-starter-mail | 3.2.1
 
 ## ▶ 5. 실행 화면
-#### ▼ noticelist
+#### ▼ 시작 화면
 <img src="./image/noticelist.png" width=1000px /><br>
-#### ▼ login 성공
+#### ▼ 로그인 성공
 <img src="./image/login sucess.png" width=1000px /><br>
-#### ▼ login 실패 (해당 아이디 없음)
+#### ▼ 로그인 실패 (해당 아이디 없음)
 <img src="./image/login fail, id.png" width=1000px /><br>
-#### ▼ login 실패 (비밀번호 불일치)
+#### ▼ 로그인 실패 (비밀번호 불일치)
 <img src="./image/login fail, password.png" width=1000px /><br>
-#### ▼ register 성공
+#### ▼ 계정 생성 성공
 <img src="./image/register sucess send email.png" width=1000px /><br>
-#### ▼ register 실패 (사용중인 아이디)
+#### ▼ 계정 생성 실패 (사용중인 아이디)
 <img src="./image/register fail. id.png" width=1000px /><br>
-#### ▼ register 실패 (사용중인 이메일)
+#### ▼ 계정 생성 실패 (사용중인 이메일)
 <img src="./image/register fail, email.png" width=1000px /><br>
-#### ▼ 도착한 이메일
+#### ▼ 도착한 인증번호 이메일
 <img src="./image/register email.png" width=1000px /><br>
-#### ▼ register 인증번호 성공
+#### ▼ 인증번호 일치
 <img src="./image/register sucess correct.png" width=1000px /><br>
-#### ▼ register 인증번호 실패
+#### ▼ 인증번호 불일치
 <img src="./image/register fail not correct.png" width=1000px /><br>
-#### ▼ 
-<img src="./image/.png" width=1000px /><br>
-#### ▼ 
-<img src="./image/.png" width=1000px /><br>
-#### ▼ 
-<img src="./image/.png" width=1000px /><br>
-#### ▼ 
-<img src="./image/.png" width=1000px /><br>
-#### ▼ 
-<img src="./image/.png" width=1000px /><br>
-#### ▼ 
-<img src="./image/.png" width=1000px /><br>
+#### ▼ 글작성
+<img src="./image/newpost before.png" width=1000px /><br>
+#### ▼ 글작성 성공
+<img src="./image/newpost after.png" width=1000px /><br>
+#### ▼ 글작성 실패 (제목 없음)
+<img src="./image/newpost fail, title.png" width=1000px /><br>
+#### ▼ 글작성 실패 (본문 없음)
+<img src="./image/newpost fail, content.png" width=1000px /><br>
+#### ▼ 댓글 작성
+<img src="./image/comment before.png" width=1000px /><br>
+#### ▼ 댓글 작성 성공
+<img src="./image/comment after.png" width=1000px /><br>
+#### ▼ 글수정 (댓글 막기)
+<img src="./image/edit block comment before.png" width=1000px /><br>
+#### ▼ 댓글이 막힌 게시물
+<img src="./image/edit block comment after.png" width=1000px /><br>
+#### ▼ 글수정 (비밀글 설정)
+<img src="./image/edit private before.png" width=1000px /><br>
+#### ▼ 해당 유저가 작성한 글이 아니면 보이지 않음
+<img src="./image/edit private after.png" width=1000px /><br>
